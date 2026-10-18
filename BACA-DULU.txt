@@ -1,0 +1,10 @@
+PERBAIKAN: KATA SAMBUTAN DI HALAMAN LOGIN
+=========================================
+Isi: 2 file saja.
+  resources\views\auth\login.blade.php
+  public\css\auth.css
+
+Cara pakai:
+1. Salin folder "resources" dan "public" dari sini ke folder proyek (sewa-in), pilih Replace.
+2. Jalankan:  php artisan view:clear
+3. Di browser tekan Ctrl+Shift+R.

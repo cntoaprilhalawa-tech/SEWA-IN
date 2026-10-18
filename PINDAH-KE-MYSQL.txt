@@ -1,0 +1,60 @@
+PINDAH DARI SQLITE KE MYSQL (WAMP)
+==================================
+Proyek ini bawaannya memakai SQLite (satu file: database/database.sqlite).
+Dengan WAMP kamu bisa memakai MySQL. Data lama bisa ikut dipindahkan.
+File SQLite lama TIDAK diubah, jadi kamu bisa kembali kapan saja.
+
+A. CADANGKAN DULU (1 menit)
+   Salin dua file ini ke tempat lain:  .env   dan   database\database.sqlite
+
+B. SIAPKAN DATABASE DI WAMP
+   1. Jalankan WAMP sampai ikon di pojok kanan bawah berwarna HIJAU.
+   2. Buka  http://localhost/phpmyadmin   (user: root, password: kosong).
+   3. Klik tab "Databases". Isi nama:  sewain
+      Collation pilih:  utf8mb4_unicode_ci   lalu klik Create.
+
+C. UBAH FILE .env
+   Cari bagian database, lalu ubah menjadi seperti ini (hapus tanda # di depan baris DB_...):
+
+      DB_CONNECTION=mysql
+      DB_HOST=127.0.0.1
+      DB_PORT=3306
+      DB_DATABASE=sewain
+      DB_USERNAME=root
+      DB_PASSWORD=
+
+   (DB_PASSWORD dibiarkan kosong jika MySQL WAMP-mu tidak memakai kata sandi.)
+
+D. BUAT TABEL & PINDAHKAN DATA  (terminal di folder proyek)
+      php artisan config:clear
+      php artisan migrate
+      php artisan sewain:copy-sqlite
+
+   Jika berhasil, muncul tabel ringkasan jumlah data di SQLite dan di MySQL, semuanya berstatus OK.
+
+   Mau mulai dari kosong (tanpa data lama)? Ganti perintah ketiga dengan:
+      php artisan db:seed
+      php artisan db:seed --class=AdminSeeder
+   Akun admin dari seeder:  admin@sewain.test  /  admin12345
+
+E. JALANKAN WEB
+      php artisan serve
+   Login seperti biasa. Foto barang tidak perlu dipindah (tersimpan di folder storage, bukan di database).
+
+F. LIHAT ISI DATABASE
+   Buka phpMyAdmin > klik database "sewain" > klik tabel (users, items, bookings, dst).
+
+KEMBALI KE SQLITE
+   Ubah .env menjadi  DB_CONNECTION=sqlite  lalu jalankan  php artisan config:clear
+   Data lama di database\database.sqlite masih utuh.
+
+JIKA ADA MASALAH
+- "could not find driver"        : ekstensi pdo_mysql belum aktif di PHP yang dipakai terminal.
+                                   Cek:  php -m | findstr pdo_mysql
+                                   Pastikan terminal memakai PHP milik WAMP (cek:  php -v ).
+                                   Di menu WAMP: PHP > PHP extensions > centang pdo_mysql.
+- "Unknown database 'sewain'"    : database belum dibuat (langkah B).
+- "Connection refused" / timeout : WAMP belum hijau, atau port MySQL bukan 3306 (ubah DB_PORT).
+- "Access denied for user"       : DB_USERNAME / DB_PASSWORD tidak cocok dengan MySQL-mu.
+- "Database tujuan sudah berisi data" : jalankan  php artisan sewain:copy-sqlite --force
+                                   (mengosongkan tabel MySQL lalu mengisinya ulang dari SQLite).

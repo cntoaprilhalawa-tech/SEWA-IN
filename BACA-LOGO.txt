@@ -1,0 +1,20 @@
+LOGO SEWA-IN
+============
+Konsep: label harga berbentuk panah (motif label gantung yang sudah jadi ciri web SEWA-IN),
+berwarna amber #E8A33D, dengan huruf S berwarna navy #1E2A4A dan lubang gantungan.
+
+File
+- sewain-mark.svg            Lambang saja (vektor, latar transparan)
+- sewain-mark-600.png        Lambang saja, PNG transparan 600 px
+- sewain-icon.svg / .png     Ikon aplikasi: lambang di kotak navy bersudut bulat (512 / 192 px)
+- apple-touch-icon.png       Ikon layar utama iPhone (180 px)
+- favicon-32.png             Favicon 32 px (favicon.svg ada di folder public)
+- sewain-lockup-terang.svg   Lambang + tulisan, untuk latar TERANG
+- sewain-lockup-gelap.svg    Lambang + tulisan, untuk latar GELAP
+
+Catatan: file lockup memakai teks dengan font Plus Jakarta Sans (font yang sama dengan web).
+Jika font itu tidak terpasang di komputer, tulisan tampil dengan font sans-serif bawaan.
+Di dalam web, logo sudah dipakai lewat komponen <x-logo> sehingga selalu memakai font yang benar.
+
+Aturan pakai: beri ruang kosong di sekeliling logo minimal setinggi huruf "S"; jangan ubah warna
+lambang; ukuran terkecil yang dianjurkan 16 px (favicon).

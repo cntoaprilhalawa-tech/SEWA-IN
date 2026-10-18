@@ -1,0 +1,171 @@
+/* ===== Halaman masuk & daftar SEWA-IN ===== */
+.auth2{margin:0;min-height:100vh;display:grid;grid-template-columns:minmax(380px,46%) 1fr;background:var(--bg)}
+
+/* ---------- Panel kiri: papan label sewa ---------- */
+.auth2-side{
+  position:sticky;top:0;height:100vh;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:space-between;gap:24px;
+  padding:36px clamp(28px,4vw,56px);
+  color:#fff;background-color:var(--navy);
+  background-image:radial-gradient(rgba(255,255,255,.07) 1.2px,transparent 1.3px);
+  background-size:24px 24px;
+}
+.auth2-brand{font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-weight:800;font-size:1.3rem;color:#fff;text-decoration:none;letter-spacing:-.01em}
+.auth2-hero h2{margin:0;font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-weight:800;font-size:clamp(1.75rem,2.7vw,2.5rem);line-height:1.13;letter-spacing:-.02em;max-width:15em;text-wrap:balance}
+.auth2-hero p{margin:14px 0 0;color:#b8c1da;font-size:.98rem;line-height:1.6;max-width:30em}
+
+/* label gantung */
+.tags{position:relative;height:300px;margin:6px 0 0;max-width:420px}
+.tag{
+  position:absolute;width:196px;transform-origin:50% 0;
+  transform:rotate(var(--r,0deg));
+  filter:drop-shadow(0 10px 14px rgba(8,12,26,.35));
+  animation:tagSwing .95s cubic-bezier(.2,.9,.25,1) both;animation-delay:var(--d,0s);
+}
+.tag-body{
+  background:#FFFDF8;color:#232733;padding:30px 16px 14px;
+  clip-path:polygon(16% 0,84% 0,100% 11%,100% 100%,0 100%,0 11%);
+}
+.tag-hole{position:absolute;top:11px;left:50%;width:13px;height:13px;margin-left:-6.5px;border-radius:50%;background:var(--navy);box-shadow:inset 0 1px 2px rgba(0,0,0,.5);z-index:2}
+.tag-string{position:absolute;top:-34px;left:50%;margin-left:-14px;width:28px;height:48px;z-index:1;overflow:visible}
+.tag-name{font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-weight:700;font-size:.98rem;line-height:1.25;margin:0}
+.tag-price{margin:6px 0 10px;font-weight:700;color:var(--amber-dk);font-size:.95rem}
+.tag-price small{color:var(--sub);font-weight:500;font-size:.78rem}
+.tag-state{display:inline-block;font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:99px}
+.tag-state.ok{background:var(--ok-bg);color:var(--ok)}
+.tag-state.busy{background:var(--warn-bg);color:var(--warn)}
+@keyframes tagSwing{
+  0%{opacity:0;transform:rotate(calc(var(--r,0deg) + 9deg)) translateY(-22px)}
+  55%{opacity:1;transform:rotate(calc(var(--r,0deg) - 3deg)) translateY(2px)}
+  100%{opacity:1;transform:rotate(var(--r,0deg)) translateY(0)}
+}
+
+/* tiga langkah (urutan nyata) */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:520px}
+.steps li{display:flex;gap:10px;align-items:flex-start;font-size:.84rem;line-height:1.35;color:#dfe3ee}
+.steps b{flex:none;width:24px;height:24px;border-radius:50%;background:var(--amber);color:var(--navy-2);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-family:'Plus Jakarta Sans',sans-serif}
+
+/* ---------- Panel kanan: form ---------- */
+.auth2-main{display:flex;flex-direction:column;min-width:0;min-height:100vh}
+.auth2-top{display:flex;justify-content:flex-end;padding:22px 32px 0}
+.auth2-top a{font-size:.85rem;color:var(--sub);text-decoration:none;padding:6px 10px;border-radius:8px}
+.auth2-top a:hover{color:var(--ink);background:rgba(30,42,74,.06)}
+.auth2-col{width:100%;max-width:420px;margin:auto;padding:24px 24px 56px}
+.auth2 .alert{margin-bottom:18px;padding:12px 14px;border-radius:12px;font-size:.88rem;border:1px solid var(--ok);background:var(--ok-bg);color:var(--ok)}
+.auth2 .alert.bad{border-color:var(--bad);background:var(--bad-bg);color:var(--bad)}
+
+.auth2 h1{margin:0;font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:2rem;font-weight:800;letter-spacing:-.02em;color:var(--navy)}
+.auth2 .lead{margin:6px 0 26px;color:var(--sub);font-size:.95rem;line-height:1.5}
+
+.auth2 .field{margin-bottom:16px}
+.auth2 .field>label,.auth2 .legend{display:block;margin:0 0 7px;font-size:.84rem;font-weight:600;color:var(--ink)}
+.auth2 .control{position:relative}
+.auth2 .control .ico{position:absolute;left:14px;top:50%;width:18px;height:18px;transform:translateY(-50%);color:#9a9588;pointer-events:none;transition:color .15s}
+.auth2 .control:focus-within .ico{color:var(--amber-dk)}
+.auth2 .field input[type=text],
+.auth2 .field input[type=email],
+.auth2 .field input[type=password]{
+  width:100%;height:50px;padding:0 14px 0 44px;font-size:.95rem;font-family:inherit;color:var(--ink);
+  background:#fff;border:1.5px solid var(--line);border-radius:12px;
+  transition:border-color .15s,box-shadow .15s;
+}
+.auth2 .field input[type=text]:hover,.auth2 .field input[type=email]:hover,.auth2 .field input[type=password]:hover{border-color:#d3cdbf}
+.auth2 .field input:focus{outline:0;border-color:var(--amber);box-shadow:0 0 0 4px rgba(232,163,61,.2)}
+.auth2 .field input.noicon{padding-left:14px}
+.auth2 .control.hasbtn input{padding-right:48px}
+.auth2 .field.has-error input{border-color:var(--bad);background:#fffafa}
+.auth2 .field.has-error input:focus{box-shadow:0 0 0 4px rgba(192,80,61,.15)}
+.auth2 .err{display:flex;gap:6px;align-items:flex-start;margin:7px 0 0;color:var(--bad);font-size:.82rem;line-height:1.4}
+.auth2 .err svg{flex:none;width:15px;height:15px;margin-top:1px}
+.auth2 .hint{margin:7px 0 0;color:var(--sub);font-size:.8rem;line-height:1.45}
+
+.auth2 .eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:38px;height:38px;border:0;background:none;border-radius:9px;color:#8b867a;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.auth2 .eye:hover{background:rgba(30,42,74,.06);color:var(--ink)}
+.auth2 .eye:focus-visible{outline:2px solid var(--amber);outline-offset:0}
+.auth2 .eye svg{width:19px;height:19px}
+.auth2 .eye .off{display:none}
+.auth2 .eye.on .off{display:block}
+.auth2 .eye.on .show{display:none}
+
+.auth2 .check{display:flex;align-items:center;gap:9px;margin:2px 0 22px;font-size:.88rem;color:var(--ink);font-weight:500;cursor:pointer;width:max-content}
+.auth2 .check input{width:18px;height:18px;margin:0;accent-color:var(--amber-dk);cursor:pointer}
+
+.auth2 .submit{
+  width:100%;height:52px;border:0;border-radius:12px;cursor:pointer;
+  background:var(--amber);color:var(--navy-2);font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-weight:800;font-size:1rem;
+  box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 8px 18px -8px rgba(200,132,42,.7);
+  transition:background .15s,transform .1s,box-shadow .15s;
+}
+.auth2 .submit:hover{background:#efae4d}
+.auth2 .submit:active{transform:translateY(1px);box-shadow:0 4px 10px -6px rgba(200,132,42,.8)}
+.auth2 .submit:focus-visible{outline:3px solid var(--navy);outline-offset:3px}
+.auth2 .submit[disabled]{opacity:.7;cursor:progress}
+
+.auth2 .switch{margin:26px 0 0;padding:16px 18px;border:1.5px dashed #d8d2c4;border-radius:14px;font-size:.88rem;line-height:1.5;color:var(--sub)}
+.auth2 .switch a{display:inline-block;margin-top:4px;font-weight:700;color:var(--navy);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--amber)}
+.auth2 .switch a:hover{color:var(--amber-dk)}
+
+/* pilihan peran (daftar) */
+.auth2 fieldset{border:0;margin:0 0 16px;padding:0;min-width:0}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.auth2 .choice{position:relative;display:block;margin:0}
+.choice input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.choice .box{display:block;height:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;transition:border-color .15s,background .15s,box-shadow .15s}
+.choice .box b{display:block;font-size:.92rem;color:var(--ink)}
+.choice .box span{display:block;margin-top:2px;font-size:.78rem;color:var(--sub);line-height:1.35}
+.choice input:checked+.box{border-color:var(--amber);background:#fffaf0;box-shadow:0 0 0 3px rgba(232,163,61,.18)}
+.choice input:focus-visible+.box{outline:3px solid var(--navy);outline-offset:2px}
+.auth2 .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.auth2 input[type=file]{width:100%;padding:9px;border:1.5px dashed #cfc8b8;border-radius:12px;background:#fff;font-size:.85rem;color:var(--sub);font-family:inherit}
+.auth2 input[type=file]::file-selector-button{margin-right:12px;border:0;border-radius:8px;padding:8px 14px;background:var(--navy);color:#fff;font-weight:600;font-family:inherit;cursor:pointer}
+.auth2 input[type=file]:focus{outline:0;border-color:var(--amber);box-shadow:0 0 0 4px rgba(232,163,61,.2)}
+
+/* ---------- Layar kecil: panel jadi pita ringkas ---------- */
+@media(max-width:900px){
+  .auth2{grid-template-columns:1fr}
+  .auth2-side{position:static;height:auto;padding:18px 20px 22px;gap:16px;justify-content:flex-start}
+  .auth2-hero h2{font-size:1.25rem;max-width:none}
+  .auth2-hero p,.tags,.steps{display:none}
+  .auth2-main{min-height:0}
+  .auth2-top{padding:14px 16px 0}
+  .auth2-col{padding:14px 20px 40px}
+  .auth2 h1{font-size:1.65rem}
+}
+@media(max-width:480px){.choices,.auth2 .two{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.tag{animation:none}.auth2 *{transition:none!important}}
+
+/* ---------- Widget "saya bukan robot" ---------- */
+.human{margin:0 0 20px}
+.human-box{width:100%;display:flex;align-items:center;gap:13px;padding:12px 14px;background:var(--card);border:1.5px solid var(--line);border-radius:12px;
+  cursor:pointer;text-align:left;font:inherit;color:var(--ink);transition:border-color .15s,box-shadow .15s}
+.human-box:hover{border-color:#d3cdbf}
+.human-box:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
+.human-check{position:relative;flex:none;width:28px;height:28px;border:2px solid #b9b3a4;border-radius:8px;background:var(--card);display:flex;align-items:center;justify-content:center;
+  transition:background .2s,border-color .2s}
+.human-check svg{width:17px;height:17px;stroke:#fff;stroke-dasharray:24;stroke-dashoffset:24;opacity:0;transition:stroke-dashoffset .4s .12s ease,opacity .1s .12s}
+.human-spin{position:absolute;inset:-2px;border-radius:9px;border:2.5px solid var(--amber);border-right-color:transparent;border-bottom-color:transparent;opacity:0}
+.human[data-state="loading"] .human-spin{opacity:1;animation:humanSpin .75s linear infinite}
+.human[data-state="loading"] .human-check{border-color:transparent}
+.human[data-state="ok"] .human-check{background:var(--ok);border-color:var(--ok)}
+.human[data-state="ok"] .human-check svg{stroke-dashoffset:0;opacity:1}
+.human[data-state="ok"] .human-box{border-color:var(--ok);background:var(--ok-bg)}
+.human[data-state="error"] .human-box,.human.has-error .human-box{border-color:var(--bad)}
+.human-label{flex:1;min-width:0;line-height:1.3}
+.human-label b{display:block;font-size:.92rem;font-weight:600}
+.human-label small{display:block;font-size:.76rem;color:var(--sub);font-weight:500}
+.human-label small:empty{display:none}
+.human-badge{display:flex;align-items:center;gap:7px;flex:none;color:var(--sub);font-size:.62rem;line-height:1.2;text-align:right;letter-spacing:.02em}
+.human-badge svg{width:26px;height:26px;color:var(--amber-dk)}
+.human .err{min-height:0}
+.human .err:empty{display:none}
+.human.shake .human-box{animation:humanShake .42s}
+@keyframes humanSpin{to{transform:rotate(360deg)}}
+@keyframes humanShake{0%,100%{transform:none}20%{transform:translateX(-7px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
+@media(max-width:380px){.human-badge span{display:none}}
+@media(prefers-reduced-motion:reduce){.human-spin{animation:none!important}}
+.auth2-top{gap:8px;align-items:center}
+
+/* Kata sambutan: tangan melambai (hanya beberapa kali saat dibuka) */
+.auth2 h1 .wave{display:inline-block;transform-origin:70% 78%;animation:authWave 2.2s ease-in-out .9s 2}
+@keyframes authWave{0%,60%,100%{transform:rotate(0)}10%{transform:rotate(16deg)}20%{transform:rotate(-8deg)}30%{transform:rotate(16deg)}40%{transform:rotate(-4deg)}50%{transform:rotate(10deg)}}
+@media(prefers-reduced-motion:reduce){.auth2 h1 .wave{animation:none}}

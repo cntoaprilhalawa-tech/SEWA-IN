@@ -1,0 +1,77 @@
+/* ===== SEWA-IN: logo, tombol tema, dan mode gelap ===== */
+
+/* ---------- Logo ---------- */
+.logo-lockup{display:inline-flex;align-items:center;gap:.5em;vertical-align:middle}
+.logo-mark{display:block;flex:none}
+.logo-word{font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-weight:800;letter-spacing:-.01em;line-height:1}
+.logo-word i{font-style:normal;color:var(--amber)}
+
+/* ---------- Tombol tema ---------- */
+.theme-toggle{display:inline-flex;align-items:center;justify-content:center;flex:none;width:38px;height:38px;padding:0;border-radius:99px;
+  border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s,transform .15s}
+.theme-toggle:hover{border-color:var(--amber)}
+.theme-toggle:active{transform:scale(.94)}
+.theme-toggle:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.theme-toggle .ti{transition:transform .35s cubic-bezier(.3,1.4,.5,1)}
+.theme-toggle:hover .ti{transform:rotate(18deg)}
+html:not([data-theme="dark"]) .ti-sun,html[data-theme="dark"] .ti-moon{display:none}
+header.nav .theme-toggle,.nav-links .theme-toggle{border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:#fff}
+header.nav .theme-toggle:hover{border-color:var(--amber)}
+
+/* peralihan halus saat tema diganti */
+html.theme-anim *,html.theme-anim *::before,html.theme-anim *::after{
+  transition:background-color .35s ease,border-color .35s ease,color .35s ease,fill .35s ease,box-shadow .35s ease!important}
+
+/* ---------- Mode gelap ---------- */
+html[data-theme="dark"]{
+  --bg:#0c1220; --card:#141c32; --ink:#e8ebf4; --sub:#9aa4c0; --line:#26304d;
+  --ok:#5cbf86; --ok-bg:#112a1e; --warn:#e2b04f; --warn-bg:#2b2310; --bad:#e8745f; --bad-bg:#2f1814;
+}
+
+/* teks yang tadinya navy */
+html[data-theme="dark"] .btn.link,
+html[data-theme="dark"] .stat-box b,
+html[data-theme="dark"] .auth2 h1,
+html[data-theme="dark"] .auth2 .switch a{color:var(--ink)}
+html[data-theme="dark"] .auth2 .switch a:hover{color:var(--amber)}
+
+/* landing */
+html[data-theme="dark"] .search-card input{background:var(--bg);color:var(--ink)}
+html[data-theme="dark"] .chip:hover{background:#2b2412}
+html[data-theme="dark"] .badge.ok{background:var(--ok-bg);color:var(--ok)}
+html[data-theme="dark"] .badge.bad{background:var(--bad-bg);color:var(--bad)}
+html[data-theme="dark"] .hp-row{background:#1b2542;color:var(--ink)}
+html[data-theme="dark"] .hp-dot{background:var(--ok-bg);color:var(--ok)}
+html[data-theme="dark"] .itemcard:hover{box-shadow:0 12px 28px rgba(0,0,0,.5)}
+html[data-theme="dark"] .fx-landing .step:hover,
+html[data-theme="dark"] .fx-landing .trust>div:hover,
+html[data-theme="dark"] .fx-landing .stat-box:hover{box-shadow:0 14px 30px -14px rgba(0,0,0,.7)}
+
+/* login & daftar */
+html[data-theme="dark"] .auth2 .field input[type=text],
+html[data-theme="dark"] .auth2 .field input[type=email],
+html[data-theme="dark"] .auth2 .field input[type=password]{background:var(--card);color:var(--ink)}
+html[data-theme="dark"] .auth2 .field input[type=text]:hover,
+html[data-theme="dark"] .auth2 .field input[type=email]:hover,
+html[data-theme="dark"] .auth2 .field input[type=password]:hover{border-color:#37456b}
+html[data-theme="dark"] .auth2 .field.has-error input{background:#2a1716}
+html[data-theme="dark"] .auth2 .control .ico{color:#7d879f}
+html[data-theme="dark"] .choice .box{background:var(--card)}
+html[data-theme="dark"] .choice input:checked+.box{background:#2b2412}
+html[data-theme="dark"] .auth2 input[type=file]{background:var(--card);border-color:#37456b;color:var(--sub)}
+html[data-theme="dark"] .auth2 input[type=file]::file-selector-button{background:#2b3a62}
+html[data-theme="dark"] .auth2 .switch{border-color:#37456b}
+html[data-theme="dark"] .auth2-top a:hover,
+html[data-theme="dark"] .auth2 .eye:hover{background:rgba(255,255,255,.08)}
+html[data-theme="dark"] .human-box:hover{border-color:#37456b}
+html[data-theme="dark"] .human-check{border-color:#4a5880}
+
+/* peta: redupkan ubin agar tidak menyilaukan */
+html[data-theme="dark"] .leaflet-tile{filter:brightness(.75) contrast(1.05) saturate(.85)}
+html[data-theme="dark"] .leaflet-container{background:#0f1730}
+
+/* label harga selalu krem (kertas), jadi isinya tetap memakai warna terang di kedua tema */
+html[data-theme="dark"] .tag-state.ok{background:#e8f5ec;color:#3F8F5F}
+html[data-theme="dark"] .tag-state.busy{background:#fbf1de;color:#B8862B}
+html[data-theme="dark"] .tag-price small{color:#6b7280}
+html[data-theme="dark"] .side .badge.bad{background:var(--bad);color:#fff}
